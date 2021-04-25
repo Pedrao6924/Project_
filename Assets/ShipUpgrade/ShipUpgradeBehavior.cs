@@ -13,6 +13,7 @@ public class ShipUpgradeBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		
 	}
 }

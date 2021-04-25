@@ -18,9 +18,7 @@ public class DeletionZone : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-
-		Debug.Log("Got it");
-
+		
 		col.gameObject.SetActive(false);
 		objectPool.Enqueue(col.gameObject);
 		

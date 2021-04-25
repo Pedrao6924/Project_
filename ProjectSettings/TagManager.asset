@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - SpawnedObject
+  - Enemy
+  - Upgrade
+  - PowerUp
   layers:
   - Default
   - TransparentFX
