@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour {
 
 	ObjectPooler objectPooler;
-	GameObject go;
 
 	private void Start()
 	{
@@ -21,7 +20,7 @@ public class ObjectSpawner : MonoBehaviour {
 
 	void SpawnEnemyShip() 
 	{
-		go = objectPooler.SpawnFromPool("EnemyShip", transform.position, Quaternion.identity);
+		objectPooler.SpawnFromPool("EnemyShip", transform.position, Quaternion.identity);
 	}
 
 	void SpawnPowerUp()
@@ -33,4 +32,5 @@ public class ObjectSpawner : MonoBehaviour {
 	{
 		objectPooler.SpawnFromPool("ShipUpgrade", transform.position, Quaternion.identity);
 	}
+
 }

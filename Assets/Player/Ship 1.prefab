@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1640882011009690, guid: d0953cc83654af54c9a849a94c851671, type: 2}
-  fireRate: 0.6
   numberOfSideShips: 0
+  speed: 5
   ColliderSideShip1: {fileID: 65153754205188950}
   ColliderSideShip2: {fileID: 65292067665349362}
 --- !u!114 &114223316235373752

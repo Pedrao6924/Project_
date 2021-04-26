@@ -17,21 +17,13 @@ public class SideShipCollider : MonoBehaviour {
 			col.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
 			col.gameObject.transform.position = player.transform.position;
 		}
+
 		else if(player.numberOfSideShips == 2 )
 		{
 			col.gameObject.SetActive(false);
 			objectPool.Enqueue(col.gameObject);
-
 		}
 
 	}
-	// Use this for initialization
-	void Start () {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

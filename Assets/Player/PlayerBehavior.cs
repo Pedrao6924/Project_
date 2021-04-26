@@ -6,21 +6,39 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public GameObject bullet;
 
-	public float fireRate = 0.6f;
+	private float fireRate = 0.6f;
 
 	private GameObject sideShip1;
 	private GameObject sideShip2;
 
 	public int numberOfSideShips = 0;
 
+	public float speed = 5.0f;
+
 	public Collider ColliderSideShip1,ColliderSideShip2;
 
 	Queue<GameObject> objectPool = new Queue<GameObject>();
+
+	private Camera cam;
+
+
+	//-------------------------------
+
+	//	<<Bullet pool logic here>>
+
+	//-------------------------------
 
 	void SpawnBullet()
 	{
 		if(Input.GetMouseButton(0))
 		{
+
+			//-------------------------------
+
+			//	<<Bullet pool logic here>>
+
+			//-------------------------------
+
 			bullet.transform.position = transform.position + new Vector3(0f,0f,3f);
 			Instantiate(bullet);
 
@@ -29,6 +47,7 @@ public class PlayerBehavior : MonoBehaviour {
 				bullet.transform.position = transform.position + new Vector3(0f,0f,-0.5f);
 				Instantiate(bullet);
 			}	
+
 			if(fireRate <= 0.3f)
 			{
 				bullet.transform.position = transform.position + new Vector3(0f,0f,-1f);
@@ -49,6 +68,7 @@ public class PlayerBehavior : MonoBehaviour {
 				bullet.transform.position = sideShip2.transform.position + new Vector3(0f,0f,3f);
 				Instantiate(bullet);
 			}
+
 		}	
 	}
 
@@ -68,16 +88,18 @@ public class PlayerBehavior : MonoBehaviour {
 
 			if(numberOfSideShips == 0)
 			{
-			col.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
-			sideShip1 = col.gameObject;
-			numberOfSideShips = 1;
+				col.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
+				sideShip1 = col.gameObject;
+				numberOfSideShips = 1;
 			}
+
 			else if(numberOfSideShips == 1)
 			{
 				col.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
 				sideShip2 = col.gameObject;
 				numberOfSideShips = 2;
 			}
+
 			else
 			{
 				col.gameObject.SetActive(false);
@@ -94,11 +116,18 @@ public class PlayerBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		cam = Camera.main;
 		InvokeRepeating("SpawnBullet",0f,0.5f);	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		//------------------
+		
+		//transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0f,0f,distance));
+
+     	//-----------------
 		
 		if(numberOfSideShips == 1 ){
 
@@ -106,7 +135,6 @@ public class PlayerBehavior : MonoBehaviour {
 			sideShip1.GetComponent<Collider>().enabled = false;
 			sideShip1.transform.position = transform.position + new Vector3(2f,0f,0f);
 
-		//	if(sideShip1.GetComponent<Collider>()){}
 		}
 		else if(numberOfSideShips > 1)
 		{
@@ -115,8 +143,6 @@ public class PlayerBehavior : MonoBehaviour {
 			sideShip1.transform.position = transform.position + new Vector3(2f,0f,0f);
 			sideShip2.transform.position = transform.position + new Vector3(-2f,0f,0f);
 		}
-
-		
 
 	}
 }

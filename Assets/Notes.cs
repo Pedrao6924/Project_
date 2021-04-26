@@ -1,5 +1,6 @@
 ﻿/*
 
+	UNITY 2018.2.18f1
 	TODO:
 	
 	Add Bullet to object pool
@@ -10,5 +11,17 @@
 	FIX FIRERATE FOR SHIP AND SIDESHIPS
 
 	Create logic for ship to follow mouse
+
+	ORDER:
+
+	1 - Create Bullet Pool
+
+	2 - Spawn Bullets
+
+	3 - Change FireRate
+
+	4 - Apply change to sideShips
+
+	ANYTIME - Make ship follow mouse 
 
 */
