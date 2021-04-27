@@ -21,7 +21,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 	private Camera cam;
 
-
+	private float zDis = 12.24f;
 	//-------------------------------
 
 	//	<<Bullet pool logic here>>
@@ -114,20 +114,19 @@ public class PlayerBehavior : MonoBehaviour {
 		numberOfSideShips = 0;
 	}
 
-	// Use this for initialization
+
 	void Start () {
 		cam = Camera.main;
 		InvokeRepeating("SpawnBullet",0f,0.5f);	
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 
-		//------------------
-		
-		//transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0f,0f,distance));
-
-     	//-----------------
+		//Follow mouse
+		Vector3 mouseP = Input.mousePosition;
+		transform.position =  cam.ScreenToWorldPoint(new Vector3(mouseP.x,mouseP.y,zDis));
+		//end Follow mouse
 		
 		if(numberOfSideShips == 1 ){
 

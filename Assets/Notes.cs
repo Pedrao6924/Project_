@@ -10,7 +10,6 @@
 
 	FIX FIRERATE FOR SHIP AND SIDESHIPS
 
-	Create logic for ship to follow mouse
 
 	ORDER:
 
@@ -22,6 +21,5 @@
 
 	4 - Apply change to sideShips
 
-	ANYTIME - Make ship follow mouse 
 
 */
