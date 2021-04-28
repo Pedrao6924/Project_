@@ -6,72 +6,24 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public GameObject bullet;
 
-	private float fireRate = 0.6f;
+	public float fireRate = 1f;
 
-	private GameObject sideShip1;
-	private GameObject sideShip2;
+	public GameObject sideShip1;
+	public GameObject sideShip2;
 
 	public int numberOfSideShips = 0;
-
-	public float speed = 5.0f;
 
 	public Collider ColliderSideShip1,ColliderSideShip2;
 
 	Queue<GameObject> objectPool = new Queue<GameObject>();
 
+	BulletSpawner bulletSpawner;
+
 	private Camera cam;
 
 	private float zDis = 12.24f;
-	//-------------------------------
 
-	//	<<Bullet pool logic here>>
-
-	//-------------------------------
-
-	void SpawnBullet()
-	{
-		if(Input.GetMouseButton(0))
-		{
-
-			//-------------------------------
-
-			//	<<Bullet pool logic here>>
-
-			//-------------------------------
-
-			bullet.transform.position = transform.position + new Vector3(0f,0f,3f);
-			Instantiate(bullet);
-
-			if(fireRate  <= 0.5f)
-			{
-				bullet.transform.position = transform.position + new Vector3(0f,0f,-0.5f);
-				Instantiate(bullet);
-			}	
-
-			if(fireRate <= 0.3f)
-			{
-				bullet.transform.position = transform.position + new Vector3(0f,0f,-1f);
-				Instantiate(bullet);
-			}		
-		
-			if(numberOfSideShips == 1)
-			{
-				bullet.transform.position = sideShip1.transform.position + new Vector3(0f,0f,3f);
-				Instantiate(bullet);
-			}
-
-			if(numberOfSideShips > 1)
-			{
-				bullet.transform.position = sideShip1.transform.position + new Vector3(0f,0f,3f);
-				Instantiate(bullet);
-
-				bullet.transform.position = sideShip2.transform.position + new Vector3(0f,0f,3f);
-				Instantiate(bullet);
-			}
-
-		}	
-	}
-
+	
 	void OnTriggerEnter(Collider col)
 	{
 
@@ -80,7 +32,10 @@ public class PlayerBehavior : MonoBehaviour {
 			col.gameObject.SetActive(false);
 			objectPool.Enqueue(col.gameObject);
 
-			fireRate -= 0.2f;
+			if(fireRate >0.4f)
+			{
+				fireRate -= 0.3f;
+			}
 		}
 
 		if(col.gameObject.tag == "Upgrade")
@@ -99,7 +54,6 @@ public class PlayerBehavior : MonoBehaviour {
 				sideShip2 = col.gameObject;
 				numberOfSideShips = 2;
 			}
-
 			else
 			{
 				col.gameObject.SetActive(false);
@@ -112,14 +66,13 @@ public class PlayerBehavior : MonoBehaviour {
 	void Awake()
 	{
 		numberOfSideShips = 0;
+		fireRate = 1f;
 	}
 
 
 	void Start () {
 		cam = Camera.main;
-		InvokeRepeating("SpawnBullet",0f,0.5f);	
 	}
-	
 
 	void Update () {
 

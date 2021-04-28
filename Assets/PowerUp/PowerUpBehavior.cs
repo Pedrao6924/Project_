@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PowerUpBehavior : MonoBehaviour {
 
-	void Start () {
+	void Start() 
+	{
 		GetComponent<Rigidbody>().velocity = new Vector3(0,0,-5f);
 	}
 

@@ -24,6 +24,8 @@ public class ObjectPooler : MonoBehaviour {
 
 	#endregion
 
+	public PlayerBehavior player;
+
 	public List<Pool> pools;
 	
 	GameObject go;
@@ -52,16 +54,39 @@ public class ObjectPooler : MonoBehaviour {
 
 	public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
 	{
-
 		GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
 		objectToSpawn.SetActive(true);
-		objectToSpawn.transform.position = new Vector3(Random.Range(-3,3) *2,-3,7);
-
+		objectToSpawn.transform.position = new Vector3(Random.Range(-3,3) *2,-3,7);	
 		poolDictionary[tag].Enqueue(objectToSpawn);		
 
 		return objectToSpawn;
 	}
 
+	public GameObject SpawnBulletFromPool(string tag, int NumOfSideShip, Vector3 position, Quaternion rotation)
+	{
+
+		GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+		objectToSpawn.SetActive(true);
+		objectToSpawn.transform.position = player.transform.position + new Vector3(0f,0f,3f);
+			
+		if(NumOfSideShip == 0)
+		{
+			objectToSpawn.transform.position = player.transform.position + new Vector3(0f,0f,3f);
+		}
+
+		if(NumOfSideShip == 1)
+		{		
+			objectToSpawn.transform.position = player.sideShip1.transform.position + new Vector3(0f,0f,3f);
+		}
+
+		if(NumOfSideShip == 2)
+		{
+			objectToSpawn.transform.position = player.sideShip2.transform.position + new Vector3(0f,0f,3f);
+		}
+
+		poolDictionary[tag].Enqueue(objectToSpawn);		
+
+		return objectToSpawn;
+	}
 	
 }

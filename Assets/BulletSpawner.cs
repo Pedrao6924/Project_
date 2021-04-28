@@ -4,22 +4,53 @@ using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour {
 
-ObjectPooler objectPooler;
+	ObjectPooler objectPooler;
 
+	float InstantiationTimer = 0f;
+
+	public string tag;
+
+	public PlayerBehavior player;
 
 	private void Start()
 	{
 		objectPooler = ObjectPooler.Instance;
-
-		InvokeRepeating("SpawnBullet",0, 1.5f);
-
 	}
 
-	void SpawnBullet() 
+	public void SpawnBullet() 
 	{
-		objectPooler.SpawnFromPool("Bullet", transform.position, Quaternion.identity);
+
+		InstantiationTimer -= Time.deltaTime;
+		
+		if (InstantiationTimer <= 0)
+     	{
+			objectPooler.SpawnBulletFromPool(tag, 0, new Vector3(0f,0f,0f), Quaternion.identity);
+
+			if(player.numberOfSideShips >=1)
+			{
+				objectPooler.SpawnBulletFromPool(tag, 1, new Vector3(0f,0f,0f), Quaternion.identity);
+
+				if(player.numberOfSideShips >1)
+				{
+					objectPooler.SpawnBulletFromPool(tag, 2, new Vector3(0f,0f,0f), Quaternion.identity);
+				}
+
+			}
+
+			InstantiationTimer = player.fireRate; 
+		}
 
 	}
+
+
+	void Update()
+	{
+		if(Input.GetMouseButton(0))
+		{
+			SpawnBullet();
+		}
+	}
+
 
 
 

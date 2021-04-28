@@ -12,6 +12,9 @@ public class DeletionZone : MonoBehaviour {
 		if(col.gameObject.tag == "Bullet")
 		{	
 			Destroy(col.gameObject);
+
+			//apparently [ Destroy(col.gameObject); ] deactivates the gameObject 
+			//and automatically re-inserts it in the queue.
 		}
 		
 	}
