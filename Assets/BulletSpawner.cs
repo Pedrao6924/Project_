@@ -12,10 +12,6 @@ public class BulletSpawner : MonoBehaviour {
 
 	public PlayerBehavior player;
 
-	private void Start()
-	{
-		objectPooler = ObjectPooler.Instance;
-	}
 
 	public void SpawnBullet() 
 	{
@@ -24,15 +20,25 @@ public class BulletSpawner : MonoBehaviour {
 		
 		if (InstantiationTimer <= 0)
      	{
-			objectPooler.SpawnBulletFromPool(tag, 0, new Vector3(0f,0f,0f), Quaternion.identity);
+			objectPooler.SpawnFromPoolAtSides(tag, 0, new Vector3(0f,0f,0f), Quaternion.identity);
 
 			if(player.numberOfSideShips >=1)
 			{
-				objectPooler.SpawnBulletFromPool(tag, 1, new Vector3(0f,0f,0f), Quaternion.identity);
+				objectPooler.SpawnFromPoolAtSides(tag, 1, new Vector3(0f,0f,0f), Quaternion.identity);
 
-				if(player.numberOfSideShips >1)
+				if(player.numberOfSideShips >=2)
 				{
-					objectPooler.SpawnBulletFromPool(tag, 2, new Vector3(0f,0f,0f), Quaternion.identity);
+					objectPooler.SpawnFromPoolAtSides(tag, 2, new Vector3(0f,0f,0f), Quaternion.identity);
+
+					if(player.numberOfSideShips >=3)
+					{
+						objectPooler.SpawnFromPoolAtSides(tag, 3, new Vector3(0f,0f,0f), Quaternion.identity);
+                    
+						if(player.numberOfSideShips >=4)
+						{
+							objectPooler.SpawnFromPoolAtSides(tag, 4, new Vector3(0f,0f,0f), Quaternion.identity);
+						}
+					}
 				}
 
 			}
@@ -42,6 +48,10 @@ public class BulletSpawner : MonoBehaviour {
 
 	}
 
+	private void Start()
+	{
+		objectPooler = ObjectPooler.Instance;
+	}
 
 	void Update()
 	{

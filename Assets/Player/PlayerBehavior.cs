@@ -8,12 +8,12 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public float fireRate = 1f;
 
-	public GameObject sideShip1;
-	public GameObject sideShip2;
+	public GameObject sideShip1,sideShip2,sideShip3,sideShip4;
 
 	public int numberOfSideShips = 0;
 
-	public Collider ColliderSideShip1,ColliderSideShip2;
+	public Collider ColliderSideShip1,ColliderSideShip2,
+					ColliderSideShip3,ColliderSideShip4;
 
 	Queue<GameObject> objectPool = new Queue<GameObject>();
 
@@ -22,6 +22,8 @@ public class PlayerBehavior : MonoBehaviour {
 	private Camera cam;
 
 	private float zDis = 12.24f;
+
+	public DefaultVariables defVar;
 
 	
 	void OnTriggerEnter(Collider col)
@@ -32,27 +34,52 @@ public class PlayerBehavior : MonoBehaviour {
 			col.gameObject.SetActive(false);
 			objectPool.Enqueue(col.gameObject);
 
-			if(fireRate >0.4f)
+			if(fireRate > 1/defVar.maxFireRate)
 			{
-				fireRate -= 0.3f;
+				fireRate -= 0.1f;
+
+				Debug.Log(defVar.maxFireRate);
+
+				if(fireRate <1/defVar.maxFireRate)
+				{
+					fireRate = fireRate + (1/defVar.maxFireRate-fireRate);
+				}
+
 			}
 		}
 
 		if(col.gameObject.tag == "Upgrade")
 		{
-
-			if(numberOfSideShips == 0)
+			
+			if(numberOfSideShips >= 0 && numberOfSideShips <=3)
 			{
-				col.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
-				sideShip1 = col.gameObject;
-				numberOfSideShips = 1;
-			}
 
-			else if(numberOfSideShips == 1)
-			{
 				col.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
-				sideShip2 = col.gameObject;
-				numberOfSideShips = 2;
+
+				if(numberOfSideShips == 0)
+				{
+					sideShip1 = col.gameObject;
+					numberOfSideShips = 1;
+				}
+
+				else if(numberOfSideShips == 1)
+				{
+					sideShip2 = col.gameObject;
+					numberOfSideShips = 2;
+				}
+
+				else if(numberOfSideShips == 2)
+				{
+					sideShip3 = col.gameObject;
+					numberOfSideShips = 3;
+				}
+
+				else if(numberOfSideShips == 3)
+				{
+					sideShip4 = col.gameObject;
+					numberOfSideShips = 4;
+				}
+
 			}
 			else
 			{
@@ -70,7 +97,8 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 
-	void Start () {
+	void Start () 
+	{
 		cam = Camera.main;
 	}
 
@@ -88,12 +116,29 @@ public class PlayerBehavior : MonoBehaviour {
 			sideShip1.transform.position = transform.position + new Vector3(2f,0f,0f);
 
 		}
-		else if(numberOfSideShips > 1)
+		else if(numberOfSideShips == 2)
 		{
 			ColliderSideShip2.enabled = true;
 			sideShip2.GetComponent<Collider>().enabled = false;
 			sideShip1.transform.position = transform.position + new Vector3(2f,0f,0f);
 			sideShip2.transform.position = transform.position + new Vector3(-2f,0f,0f);
+		}
+		else if(numberOfSideShips == 3)
+		{
+			ColliderSideShip3.enabled = true;
+			sideShip3.GetComponent<Collider>().enabled = false;
+			sideShip1.transform.position = transform.position + new Vector3(2f,0f,0f);
+			sideShip2.transform.position = transform.position + new Vector3(-2f,0f,0f);
+			sideShip3.transform.position = transform.position + new Vector3(4f,0f,0f);
+		}
+		else if(numberOfSideShips == 4)
+		{
+			ColliderSideShip4.enabled = true;
+			sideShip4.GetComponent<Collider>().enabled = false;
+			sideShip1.transform.position = transform.position + new Vector3(2f,0f,0f);
+			sideShip2.transform.position = transform.position + new Vector3(-2f,0f,0f);
+			sideShip3.transform.position = transform.position + new Vector3(4f,0f,0f);
+			sideShip4.transform.position = transform.position + new Vector3(-4f,0f,0f);
 		}
 
 	}

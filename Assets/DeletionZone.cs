@@ -13,8 +13,6 @@ public class DeletionZone : MonoBehaviour {
 		{	
 			Destroy(col.gameObject);
 
-			//apparently [ Destroy(col.gameObject); ] deactivates the gameObject 
-			//and automatically re-inserts it in the queue.
 		}
 		
 	}

@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc6334e096cbc64ea23c17d43cf8ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defVar: {fileID: 114072630761411706, guid: d53619b403f58db448b1535ee30f92d9, type: 2}
 --- !u!136 &136419020759330566
 CapsuleCollider:
   m_ObjectHideFlags: 1

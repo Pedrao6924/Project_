@@ -227,6 +227,22 @@ Prefab:
       propertyPath: fireRate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114070077963061072, guid: 4c8a15383854eec4dba2da9171d6b662,
+        type: 2}
+      propertyPath: ColliderSideShip3
+      value: 
+      objectReference: {fileID: 1447364421}
+    - target: {fileID: 114070077963061072, guid: 4c8a15383854eec4dba2da9171d6b662,
+        type: 2}
+      propertyPath: ColliderSideShip4
+      value: 
+      objectReference: {fileID: 1674163007}
+    - target: {fileID: 114070077963061072, guid: 4c8a15383854eec4dba2da9171d6b662,
+        type: 2}
+      propertyPath: defVar
+      value: 
+      objectReference: {fileID: 114072630761411706, guid: d53619b403f58db448b1535ee30f92d9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c8a15383854eec4dba2da9171d6b662, type: 2}
   m_IsPrefabAsset: 0
@@ -393,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706da999dbcccb6499c076baed537cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defVar: {fileID: 114072630761411706, guid: d53619b403f58db448b1535ee30f92d9, type: 2}
 --- !u!4 &1190362949
 Transform:
   m_ObjectHideFlags: 0
@@ -406,6 +423,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1285560828 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4997853532862518, guid: 4c8a15383854eec4dba2da9171d6b662,
+    type: 2}
+  m_PrefabInternal: {fileID: 215405225}
+--- !u!1 &1447364419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1447364420}
+  - component: {fileID: 1447364421}
+  - component: {fileID: 1447364422}
+  m_Layer: 0
+  m_Name: ColliderShip3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1447364420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1447364419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1285560828}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1447364421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1447364419}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0720217, y: 1.0836568, z: 1}
+  m_Center: {x: 3.1047091, y: -0.23703481, z: -1.4805418e-15}
+--- !u!114 &1447364422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1447364419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5549dfe7a69a2a54cbc4e2152835ddc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 891732960}
 --- !u!1 &1459869061
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +535,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d835f4ac165888458c462a2dcbafc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1485385574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485385577}
+  - component: {fileID: 1485385576}
+  - component: {fileID: 1485385575}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1485385575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1485385574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1485385576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1485385574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1485385577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1485385574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509982065
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +724,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1674163005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674163006}
+  - component: {fileID: 1674163007}
+  - component: {fileID: 1674163008}
+  m_Layer: 0
+  m_Name: ColliderShip4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674163006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674163005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_Children: []
+  m_Father: {fileID: 1285560828}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1674163007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674163005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1020144, y: 1.08366, z: 1}
+  m_Center: {x: -3.0861452, y: -0.26492065, z: -1.983823e-15}
+--- !u!114 &1674163008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674163005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5549dfe7a69a2a54cbc4e2152835ddc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 891732960}
 --- !u!1 &2078385419
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,10 +815,11 @@ MonoBehaviour:
     size: 10
   - tag: ShipUpgrade
     preFab: {fileID: 1073698677295400, guid: 3d9d5698e6693f747bb4d48d71f5a1f1, type: 2}
-    size: 10
+    size: 4
   - tag: Bullet
     preFab: {fileID: 1640882011009690, guid: d0953cc83654af54c9a849a94c851671, type: 2}
-    size: 60
+    size: 150
+  defVar: {fileID: 114072630761411706, guid: d53619b403f58db448b1535ee30f92d9, type: 2}
 --- !u!4 &2078385421
 Transform:
   m_ObjectHideFlags: 0
